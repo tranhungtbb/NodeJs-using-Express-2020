@@ -1,0 +1,21 @@
+extends ../layout/common
+
+block content
+	.container
+		h2 Product
+		.row
+			each product in products
+				.col-6.col-sm-6.col-md-3.col-lg-3.col-xl-3(style='margin-top: 20px;')
+					div
+						img(style='width: 100%', src=product.image)
+					.info(style='margin-top: 10px;')
+						h5=product.name
+						p=product.desctription
+					div(style='display: flex;position: relative;')
+						.price(style='padding-top: 10px;')=product.price
+						button.btn.btn-primary(style='position: absolute;right: 10px;') Add to cart
+		div(style="display: flex;justify-content: center;margin-top: 30px;")
+			-var i=1
+			while i <= sum/8 +1
+				a(style="margin-right :20px",href="/product?page="+ i)=i
+				-i++

@@ -1,0 +1,18 @@
+extends ../layout/common
+
+block content
+	.container
+		h1 Login
+		if errors
+			each err in errors
+				.alert.alert-danger=err
+		form(action="/auth/login", method="POST",class ="input-form")
+			.form-group
+				label(for="inputEmail") Email
+				.col-sm-10
+					input(type="text",name ="email",class="form-control",id="inputEmail",value = values ? values.email : "")
+			.form-group
+				label(for="inputPassword") Password
+				.col-sm-10
+					input(type="password",name ="password",class="form-control",id="inputPassword",value = values ? values.password : "")
+			button(class ="btn btn-primary") Create

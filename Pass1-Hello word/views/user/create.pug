@@ -1,0 +1,22 @@
+extends ../layout/common
+
+block content
+	.container
+		h1 Create
+		if errors
+			each err in errors
+				.alert.alert-danger=err
+		form(action="/user/create", method="POST",class ="input-form" enctype="multipart/form-data")
+			.form-group
+				label(for="inputName") Name
+				.col-sm-10
+					input(type="text",name ="name",class="form-control",id="inputName",value = values ? values.name : "")
+			.form-group
+				label(for="inputEmail") Email
+				.col-sm-10
+					input(type="text",name ="email",class="form-control",id="inputEmail",value = values ? values.email : "")
+			.form-group
+				label(for="choiseAvatar") Avatar
+				.col-sm-10
+					input(type="file",name ="avatar",class="form-control-file",id="choiseAvatar")
+			button(class ="btn btn-primary") Create

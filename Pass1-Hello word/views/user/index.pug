@@ -1,0 +1,22 @@
+extends ../layout/common
+
+block content
+	.container
+		h1 Users
+		a(href="/user/create" ,class ="btn btn-primary",style="margin-bottom:10px") new 
+		form(action="/user/search", method ="GET", class="form-group",style="display:flex")
+			input(href="",type ="text", name ="q",class="form-control")
+			button(class ="btn btn-primary",style="margin-left:10px") Search
+		table(class="table")
+			thead
+				tr
+					th(scope="col") Name
+					th(scope="col") Email
+					th(scope="col") Action
+			each user in users
+				tbody
+					tr
+						td=user.name
+						td=user.email
+						td
+							a(class ="btn btn-light",href='/user/'+ user.id) view
